@@ -35,7 +35,7 @@ public class Blog {
 
   }
 
-  public Blog(String title, String body, String imageUrl, boolean published) {
+  public Blog(String title, String body, String imageUrl, LocalDate publishedDate, User author,  boolean published) {
     this.title = title;
     this.body = body;
     this.imageUrl = imageUrl;
