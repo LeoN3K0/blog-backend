@@ -10,4 +10,6 @@ public interface BlogRepository extends JpaRepository<Blog, Long>{
     List<Blog> findByPublished(boolean published);
 
     List<Blog> findByTitleContaining(String title);
+
+    List<Blog> findByAuthorContaining(String author);
 }

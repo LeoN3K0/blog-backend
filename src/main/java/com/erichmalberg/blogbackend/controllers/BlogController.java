@@ -31,14 +31,17 @@ public class BlogController {
     BlogRepository blogRepository;
 
     @GetMapping("/blogs")
-    public ResponseEntity<List<Blog>> getAllBlogs(@RequestParam(required = false) String title) {
+    public ResponseEntity<List<Blog>> getAllBlogs(@RequestParam(required = false) String title, @RequestParam(required = false) String author) {
         try {
-            List<Blog> blogs = new ArrayList<Blog>();
+            List<Blog> blogs = new ArrayList<>();
 
-            if (title == null)
+            if (title == null && author == null) {
                 blogRepository.findAll().forEach(blogs::add);
-            else
+            } else if (title != null) {
                 blogRepository.findByTitleContaining(title).forEach(blogs::add);
+            } else if (author != null) {
+                blogRepository.findByAuthorContaining(author).forEach(blogs::add);
+            }
 
             if (blogs.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
