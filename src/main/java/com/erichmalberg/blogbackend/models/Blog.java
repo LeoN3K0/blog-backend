@@ -18,9 +18,6 @@ public class Blog {
   @Column(name = "body")
   private String body;
 
-  @Column(name = "image_url")
-  private String imageUrl;
-
   @Column(name = "published")
   private boolean published;
 
@@ -35,11 +32,12 @@ public class Blog {
 
   }
 
-  public Blog(String title, String body, String imageUrl, LocalDate publishedDate, User author,  boolean published) {
+  public Blog(String title, String body, LocalDate publishedDate, User author,  boolean published) {
     this.title = title;
     this.body = body;
-    this.imageUrl = imageUrl;
     this.published = published;
+    this.author = author;
+    this.publishedDate = publishedDate;
   }
 
   public long getId() {
@@ -62,13 +60,6 @@ public class Blog {
     this.body = body;
   }
 
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
-  }
 
   public boolean isPublished() {
     return published;
@@ -96,6 +87,6 @@ public class Blog {
 
   @Override
   public String toString() {
-    return "Blog [id=" + id + ", title=" + title + ", body=" + body + ", imageUrl=" + imageUrl + ", published=" + published + "]";
+    return "Blog [id=" + id + ", title=" + title + ", published=" + published + ", author=" + author + ", publisheddate=" + published + "]";
   }
 }

@@ -68,7 +68,7 @@ public class BlogController {
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<Blog> createBlog(@RequestBody Blog blog) {
         try {
-            Blog _blog = blogRepository.save(new Blog(blog.getTitle(), blog.getBody(), blog.getImageUrl(), blog.getPublishedDate(), blog.getAuthor(), false));
+            Blog _blog = blogRepository.save(new Blog(blog.getTitle(), blog.getBody(), blog.getPublishedDate(), blog.getAuthor(), false));
             return new ResponseEntity<>(_blog, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -84,7 +84,6 @@ public class BlogController {
             Blog _blog = blogData.get();
             _blog.setTitle(blog.getTitle());
             _blog.setBody(blog.getBody());
-            _blog.setImageUrl(blog.getImageUrl());
             _blog.setPublished(blog.isPublished());
             _blog.setPublished(blog.isPublished());
             _blog.setPublishedDate(blog.getPublishedDate());
