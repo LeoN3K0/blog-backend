@@ -85,7 +85,6 @@ public class BlogController {
             _blog.setTitle(blog.getTitle());
             _blog.setBody(blog.getBody());
             _blog.setPublished(blog.isPublished());
-            _blog.setPublished(blog.isPublished());
             _blog.setPublishedDate(blog.getPublishedDate());
             _blog.setAuthor(blog.getAuthor());
             return new ResponseEntity<>(blogRepository.save(_blog), HttpStatus.OK);
